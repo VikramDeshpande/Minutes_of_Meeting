@@ -1,4 +1,4 @@
-![](https://socialify.git.ci/Tejas1510/MOM/image?description=1&language=1&owner=1&stargazers=1&theme=Dark)
+<!-- ![](https://socialify.git.ci/Tejas1510/MOM/image?description=1&language=1&owner=1&stargazers=1&theme=Dark) -->
  
 ## 📌 Introduction
 
@@ -12,7 +12,7 @@ the topic and breaks the language barrier
 
 ## Methodology:
 
-<center><img src = "https://github.com/Tejas1510/MOM/blob/main/Images_MOM/flowchart.PNG"></img></center>
+<!-- <center><img src = "https://github.com/Tejas1510/MOM/blob/main/Images_MOM/flowchart.PNG"></img></center> -->
 
 Step 1: Convert meeting to a textual format, using Speech Recognition
 
