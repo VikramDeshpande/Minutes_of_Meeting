@@ -5,6 +5,7 @@ import '../../../node_modules/font-awesome/css/font-awesome.min.css'
 import { useHistory } from "react-router-dom";
 import { trackPromise } from 'react-promise-tracker';
 import LoadingIndicator from '../LoadingIndicator/LoadingIndicator';
+import loginImage2 from '../../assets/img/loginImage2.jpg';
 
 function Login(props) {
     const [state, setState] = useState({
@@ -139,7 +140,7 @@ function Login(props) {
     }
 
     return (
-        <div>
+        <div class="loginPage" style={{backgroundImage: `url(${loginImage2})`, height: '100vh'}}> 
             <br /><br /><br /><br />
             <form>
                 <div className="formContainer">

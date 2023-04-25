@@ -2,7 +2,6 @@ import React from 'react'
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../../../node_modules/font-awesome/css/font-awesome.min.css'
 import '../ContactUs/style.css'
-import ContactusImage from '../../assets/img/contactImage.jpg'
 const Contactus = () => {
     return (
         <div>
@@ -33,7 +32,7 @@ const Contactus = () => {
 			        </form>
 			  </div>
 			  <div  className="col-12 col-sm-6">
-                <img className="img-fluid contact-image" alt="Responsive image" src="https://csds.qld.edu.au/sdc/resources/images/find-us-map.jpg"/>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7122.3888195543905!2d81.0175463752818!3d26.801937732701603!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1681984992266!5m2!1sen!2sin" width="550" height="350" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 	  		</div>
         
 			</div>

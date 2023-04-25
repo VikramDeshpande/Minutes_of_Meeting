@@ -54,7 +54,6 @@ const speechStyle = {
       outline: 'none',
       backgroundColor: 'rgba(101,205,170,1)',
       border: 'none',
-      outline: 'none',
       borderRadius: '50%'
     },
   },
@@ -72,7 +71,6 @@ const speechStyle = {
       outline: 'none',
       backgroundColor: 'rgba(101,205,170,1)',
       border: 'none',
-      outline: 'none',
       borderRadius: '50%'
     },
   },
@@ -105,7 +103,6 @@ const speechStyle = {
       height: '30px',
       cursor: 'pointer',
       pointerEvents: 'none',
-      outline: 'none',
       backgroundColor: 'rgba(101,205,170,1)',
       border: 'none',
       outline: 'none',
@@ -166,12 +163,11 @@ function MyModal(props) {
   const getSummary = (model_name) => {
     console.log("getSummary model=", model_name);
     const model1API = 'http://localhost:8000/api/nltkSummarizer';
-    //const model2API = 'http://localhost:8000/api/t5Summarizer';
-    const model2API = 'http://localhost:8000/api/t5Summarizer';
+    const model2API = 'http://localhost:8000/api/bartSummarizer';
     let APIURL;
-    if (model_name === 'NLTK Model')
+    if (model_name === 'Extractive')
       APIURL = model1API;
-    else if (model_name === 'T5 Model')
+    else if (model_name === 'Abstractive')
       APIURL = model2API;
 
     let token = localStorage.getItem('token');
@@ -217,7 +213,7 @@ function MyModal(props) {
   }
 
   useEffect(() => {
-    getSummary('NLTK Model');
+    getSummary('Extractive');
     return () => {
     }
   }, [])
@@ -230,11 +226,11 @@ function MyModal(props) {
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
-      style={{ marginTop: '5px' }}
+      style={{ marginTop: '25px',borderRadius:'25px' }}
     >
-      <Modal.Header closeButton style={{ backgroundColor: "rgb(61, 61, 238)", color: "white" }} >
+      <Modal.Header closeButton style={{ backgroundColor: "#1C2331", color: "white" }} >
         <Modal.Title id="contained-modal-title-vcenter" style={{ width: "100%" }} >
-          <div className="conatiner">
+          <div className="container">
             <div className="row" >
               <div className="col-8" >
                 {props.title}
@@ -245,33 +241,18 @@ function MyModal(props) {
                     <option>English</option>
                     <option>Hindi</option>
                     <option>Marathi</option>
-                    <option>Arabic</option>
-                    <option>Bengali</option>
-                    <option>Chinese</option>
-                    <option>French</option>
                     <option>Gujrati</option>
-                    <option>Japanese</option>
-                    <option>Kannada</option>
-                    <option>Malayalam</option>
-                    <option>Nepali</option>
-                    <option>Oriya</option>
-                    <option>Portuguese</option>
                     <option>Punjabi</option>
-                    <option>Russian</option>
-                    <option>Spanish</option>
-                    <option>Tamil</option>
                     <option>Telugu</option>
-                    <option>Urdu</option>
                   </Form.Control>
 
                 </Form>
               </div>
-              <div className="col-1" >
+              {/* <div className="col-1" >
                 <Pdf targetRef={ref} filename="summary.pdf">
                   {({ toPdf }) => <PictureAsPdfIcon onClick={toPdf} style={{ color: "white", cursor: "pointer" }}></PictureAsPdfIcon>}
                 </Pdf>
-
-              </div>
+              </div> */}
             </div>
           </div>
         </Modal.Title>
@@ -284,26 +265,27 @@ function MyModal(props) {
         {!promiseInProgress ?
           <p ref={ref}>
             <div style={{ marginBottom: '20px' }}>
-              Play Transcript: <Speech text={props.transcript} styles={speechStyle} stop={true} pause={true} resume={true} />
+              Play Transcript: <Speech text={props.transcript} styles={speechStyle} stop={true} pause={true} />
             </div>
-            <div style={{ marginBottom: '20px' }}>
-              Tarnscript: &nbsp; {state.text}
+            <div className="col-11 mx-auto mt-3" style={{ marginBottom: '20px', border: '1px solid black', borderRadius: '5px', boxShadow: '0px 0px 5px 2px rgba(0,0,0,0.2)', padding: '10px' }}>
+              <span style={{ display: 'block', fontWeight: 'bold', fontSize: '20px', marginBottom: '10px' }}>Transcript:</span>
+              {state.text}
             </div>
             <div style={{ marginBottom: '20px' }}>
               <div className="row">
                 <div className="col-4 col-md-7">
-                  Summary:
-              </div>
+                  
+                </div>
                 <div className="col-8 col-md-5">
                   <div className="row">
                     <div className="col-3">
-                      Model
+                      Model:
                     </div>
                     <div className="col-9">
                       <Form>
                         <Form.Control as="select" size="sm" onChange={modelChangeHandler} value={state.model}>
-                          <option>NLTK Model</option>
-                          <option>T5 Model</option>
+                          <option>Extractive</option>
+                          <option>Abstractive</option>
                         </Form.Control>
                       </Form>
                     </div>
@@ -311,8 +293,9 @@ function MyModal(props) {
                 </div>
               </div>
 
-              <div className="row">
-                <div className="col-11 mt-3">
+              <div>
+                <div className="col-11 mx-auto mt-3" style={{ whiteSpace: 'pre-wrap', border: '1px solid black',borderRadius:'5px', padding: '10px', boxShadow: '0px 0px 5px 2px rgba(0,0,0,0.2)'}}>
+                  <span style={{ display: 'block', fontWeight: 'bold', fontSize: '20px',marginBottom: '10px' }}>Summary:</span>
                   {state.translatedSummary}
                 </div>
               </div>
@@ -339,36 +322,34 @@ export default function OutlinedCard(props) {
   const [modalShow, setModalShow] = React.useState(false);
   return (
     <div style={{ display: 'inline-block', float: 'left' }}>
-      <Card className={classes.root} style={{ backgroundColor: "white", borderRight: "6px solid rgb(63,81,181)", boxShadow: " 0 19px 38px rgba(0,0,0,0.10), 0 15px 12px rgba(0,0,0,0.10)" }}>
+      <Card className={classes.root} style={{ backgroundColor: "white", borderRadius: "10px", borderRight: "6px solid #1C2331", borderBottom: "6px solid #1C2331", boxShadow: " 0 19px 38px rgba(0,0,0,0.10), 0 15px 12px rgba(0,0,0,0.10)" }}>
         <CardContent>
           <Typography className={classes.title} color="textSecondary" gutterBottom>
             Date: {props.meet.date ? timestampConverter(props.meet.date).substring(0, 15) : null}<br></br>
-        Time: {props.meet.date ? timestampConverter(props.meet.date).substring(16, 21) : null} <br></br>
-        Duration: {props.meet.duration ? `${props.meet.duration} Min` : null}
+            Time: {props.meet.date ? timestampConverter(props.meet.date).substring(16, 21) : null} <br></br>
           </Typography>
           <Tooltip title={props.meet.title} aria-label={props.meet.title}>
-            <Typography variant="h5" component="h2" style={{ cursor: 'pointer' }}>
-              {props.meet.title.length <= 15 ? props.meet.title : props.meet.title.substring(0, 15) + '....'}
+            <Typography variant="h5" component="h2" style={{ cursor: 'pointer', fontSize: '15px' }}>
+              {props.meet.title}
             </Typography>
           </Tooltip>
           <Chip
             icon={<FaceIcon />}
             label={props.meet.hostname}
-            clickable
-            color="secondary"
+            color="white"
           />
         </CardContent>
         <CardActions>
           <Button
             variant="contained"
-            color="primary"
-            style={{ margin: '10px' }}
+            color="#1C2331"
+            style={{ margin: '10px', borderRadius: '10px', backgroundColor:'#5bc0de' }}
             className={classes.button}
             endIcon={<SendIcon />}
             onClick={() => setModalShow(true)}
           >
             View Summary
-        </Button>
+          </Button>
           <MyModal
             show={modalShow}
             onHide={() => setModalShow(false)}

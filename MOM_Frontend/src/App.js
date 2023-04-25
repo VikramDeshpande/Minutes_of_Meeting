@@ -11,7 +11,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import Dashboard from './components/Dashboard/Dashboard';
 import Footer1 from './components/Footer/Footer1';
-import Nptel from './components/NPTEL/Nptel';
+import TextSummariser from './components/TextSummariser/TextSummariser';
 
 function App() {
   // DECLARE LOGIN STATE FOR APP
@@ -47,9 +47,9 @@ function App() {
             <br/>
             <Footer/>
         </Route>
-        <Route exact path ="/nptel">
+        <Route exact path ="/textsummariser">
             <Navbar userState={state} manageState={setState}/>
-            <Nptel/>
+            <TextSummariser/>
             <br/>
             <Footer/>
         </Route>

@@ -1,9 +1,14 @@
+.loginPage {
+	background-size: cover;
+	background-position: center;
+}
 .formContainer{
-	background-color: rgb(9, 46, 75);;
+	background-color: #1C2331;
 	box-shadow: 0 20px 50px rgba(9, 46, 75, 0.7);
 	width: 350px;
 	margin: auto;
 	border: 1px solid black;
+	border-radius: 10px;
 }
 
 .signInContainer , .signUpContainer{
@@ -13,13 +18,14 @@
 .signInHeader , .signUpHeader{
 	color: white;
 	width: 50%;
-	background-color:  rgb(9, 46, 75);;
+	background-color:  #1C2331;
 	cursor: pointer;
 	display: inline-block;
-	opacity: 0.6;
+	opacity: 0.2;
 	padding: 10px 0;
 	font-size: large;
 	text-align: center;	
+	border-radius: 10px;
 }
 
 .activeHeader{

@@ -1,5 +1,7 @@
 .App{
-    background-color:rgb(61, 61, 238);
-    color:white;
+    background-color:#5bc0de;
     height:100vh;
+}
+.MuiToolbar-root {
+    background-color: #1C2331;
 }

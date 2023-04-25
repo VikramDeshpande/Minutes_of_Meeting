@@ -18,14 +18,15 @@ import CallIcon from '@material-ui/icons/Call';
 import InfoIcon from '@material-ui/icons/Info';
 import Avatar from '@material-ui/core/Avatar';
 import { deepOrange, deepPurple } from '@material-ui/core/colors';
-import logo from './Meet Digest.png';
+import logo from './MoM.png';
 import './style.css';
 import Card from './OutlinedCard.js'
 import Chip from '@material-ui/core/Chip';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { NavLink, useHistory } from 'react-router-dom';
+import sideBackground from '../../assets/img/sideBar.png'
 
-const drawerWidth = 240;
+const drawerWidth = 300;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -82,55 +83,51 @@ function Sidebar(props) {
 
   const drawer = (
     <div className="App">
-      <div className={classes.toolbar} style={{ backgroundColor: 'white', color: 'black' }} >
-        <Typography variant="h5" noWrap style={{ color: 'black', padding: '16px' }}>
-          <img src={logo} width="25%" />Meet Digest
-          </Typography>
+      <div className={classes.toolbar} style={{ backgroundColor: '#1C2331', color: 'white' }} >
+        <Typography variant="h5" noWrap style={{ color: 'white', padding: '10px' }}>
+          <img src={logo} width="13%" style={{ marginRight: '10px' }} />Minutes of Meeting
+        </Typography>
       </div>
       <Divider />
       <List >
         <ListItem>
           <Chip
-            avatar={<Avatar style={{fontSize: 'large'}}>{props.name.charAt(0).toUpperCase()}</Avatar>}
+            avatar={<Avatar style={{ fontSize: 'large' }}>{props.name.charAt(0).toUpperCase()}</Avatar>}
             label={props.name}
-            clickable
-            color="secondary"
-            style={{fontSize:'large'}}
+            color="white"
+            style={{ fontSize: 'large' }}
           />
         </ListItem>
 
         <NavLink to="/">
           <ListItem button>
-            <HomeIcon style={{ color: 'white' }}></HomeIcon>
-            <ListItemText primary="Home" style={{ marginLeft: '30px',color:'white' }} />
+            <HomeIcon style={{ color: 'black' }}></HomeIcon>
+            <ListItemText primary="Home" style={{ marginLeft: '30px', color: 'black' }} />
           </ListItem>
         </NavLink >
 
         <NavLink to="/aboutus">
-        <ListItem button>
-          <InfoIcon style={{ color: 'white' }}></InfoIcon>
-          <ListItemText primary="About Us" style={{ marginLeft: '30px',color:'white' }} />
-        </ListItem>
+          <ListItem button>
+            <InfoIcon style={{ color: 'black' }}></InfoIcon>
+            <ListItemText primary="About Us" style={{ marginLeft: '30px', color: 'black' }} />
+          </ListItem>
         </NavLink>
 
-      </List>
-      <Divider style={{ backgroundColor: 'white' }} />
-      
-      <List>
-
-      <NavLink to="/contactus">
-        <ListItem button>
-          <CallIcon style={{ color: 'white' }}></CallIcon>
-          <ListItemText primary="Contact Us" style={{ marginLeft: '30px',color:'white' }} />
-        </ListItem>
+        <NavLink to="/contactus">
+          <ListItem button>
+            <CallIcon style={{ color: 'black' }}></CallIcon>
+            <ListItemText primary="Contact Us" style={{ marginLeft: '30px', color: 'black' }} />
+          </ListItem>
         </NavLink>
-
+</List>
+        <Divider style={{ backgroundColor: 'white' }} />
+        <List>
         <ListItem button onClick={() => {
-            props.logoutHandler();
-            history.push('/');
-          }}>
-          <ExitToAppIcon style={{ color: 'white' }}></ExitToAppIcon>
-          <ListItemText primary="Logout" style={{ marginLeft: '30px' }} />
+          props.logoutHandler();
+          history.push('/');
+        }}>
+          <ExitToAppIcon style={{ color: 'black' }}></ExitToAppIcon>
+          <ListItemText primary="Logout" style={{ marginLeft: '30px',color: 'black' }} />
         </ListItem>
 
       </List>
@@ -166,7 +163,6 @@ function Sidebar(props) {
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer} aria-label="mailbox folders">
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Hidden smUp implementation="css">
           <Drawer
             container={container}
@@ -201,9 +197,9 @@ function Sidebar(props) {
         <div className={classes.toolbar} />
         {props.children}
         {
-          props.meetL.map((meet, index) => <Card key={index} meet={meet}></Card>)          
+          props.meetL.map((meet, index) => <Card key={index} meet={meet}></Card>)
         }
-        
+
 
       </main>
     </div>

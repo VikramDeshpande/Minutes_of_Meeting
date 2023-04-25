@@ -26,12 +26,9 @@ class Dashboard extends Component {
                     .then(res => res.json())
                     .then(json => {
                         if (json === undefined || json.email === '' || json.email === undefined) {
-                            // If the token is invalid or expired
-                            //console.log('navbar componentDidMount TOken Expired', json)
                             return;
                         }
                         else {
-                            // If token is correct
                             fetch('http://localhost:8000/api/getMeet', {
                                 method: 'POST',
                                 headers: {
@@ -42,7 +39,6 @@ class Dashboard extends Component {
                             })
                                 .then(res => res.json())
                                 .then(req2 => {
-                                    //console.log("getMeet", req2);
                                     let dashboardContent = [];
                                     req2.forEach(element => {
                                         dashboardContent.push(element);
@@ -59,7 +55,6 @@ class Dashboard extends Component {
 
     logoutHandler = () => {
         localStorage.removeItem('token');
-        //console.log('Handle Logout Called');
         this.props.manageState({ logged_in: false, email: '', name: '' });
     }
 
@@ -74,8 +69,6 @@ class Dashboard extends Component {
                 .then(res => res.json())
                 .then(json => {
                     if (json === undefined || json.email === '' || json.email === undefined) {
-                        // If the token is invalid or expired
-                        //console.log('navbar componentDidMount TOken Expired', json)
                         this.props.manageState({ logged_in: false, email: '', name: '' });
                     }
                     else {

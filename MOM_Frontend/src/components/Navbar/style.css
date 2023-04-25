@@ -1,5 +1,6 @@
 .navbar-brand{
     font-size: 30px;
+    font-family: 'Lora', serif;
 }
 .nav-item{
     font-size: 22px;
@@ -18,10 +19,16 @@
 }
 
 .navBackground{
-    background-color: rgb(63,81,181);
+    background-color: #1C2331;
 }
 
 .navLinkActive{
     background-color: white;
     color: rgb(63,81,181);
+}
+.close span {
+    color: #ff0000;
+}
+.nav-link{
+    font-family: 'Montserrat', sans-serif;
 }
