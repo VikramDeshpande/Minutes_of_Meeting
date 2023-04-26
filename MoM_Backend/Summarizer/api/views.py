@@ -41,17 +41,12 @@ def preProcessing(text):
 
 @api_view(['GET'])
 def current_user(request):
-    """
-    Determine the current user by their token, and return their data
-    """
+
     serializer = UserSerializer(request.user)
     return Response(serializer.data)
 
 class UserList(APIView):
-    """
-    Create a new user. It's called 'UserList' because normally we'd have a get
-    method here too, for retrieving a list of all User objects.
-    """
+    
     permission_classes = (permissions.AllowAny,)
     def post(self, request, format=None):
         serializer = UserSerializerWithToken(data=request.data)
@@ -70,13 +65,6 @@ def getMeet(request):
 
 @api_view(['GET'])
 def apiOverview(request):
-    #Uncomment Below Code to Programatically create meet content data for testing
-    # for i in range(1,16):
-    #     newMeet = MeetContent(owner='tejas@gmail.com', hostname='Tejas', title='Tejas Meet ' + str(i), duration=str(i*10), transcript='Meet Transcript ' + str(i), summary='Meet Summary ' + str(i))
-    #     newMeet.save()
-    #     newMeet = MeetContent(owner='ak@gmail.com', hostname='Ayush', title='Ayush Meet ' + str(i), duration=str(i*10), transcript='Meet Transcript ' + str(i), summary='Meet Summary ' + str(i))
-    #     newMeet.save()
-    #     print("newMeet: ", str(newMeet))
     meets = MeetContent.objects.all()
     serializer = MeetContentSerializer(meets, many=True)
     return Response(serializer.data)
