@@ -10,8 +10,6 @@ import SendIcon from '@material-ui/icons/Send';
 import Chip from '@material-ui/core/Chip';
 import FaceIcon from '@material-ui/icons/Face';
 import Modal from 'react-bootstrap/Modal';
-import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
-import Pdf from "react-to-pdf";
 import Form from 'react-bootstrap/Form'
 import { trackPromise } from 'react-promise-tracker';
 import LoadingIndicator from '../LoadingIndicator/LoadingIndicator';
@@ -165,9 +163,9 @@ function MyModal(props) {
     const model1API = 'http://localhost:8000/api/nltkSummarizer';
     const model2API = 'http://localhost:8000/api/bartSummarizer';
     let APIURL;
-    if (model_name === 'Extractive')
+    if (model_name === 'Extractive (condensing)')
       APIURL = model1API;
-    else if (model_name === 'Abstractive')
+    else if (model_name === 'Abstractive (interpreting)')
       APIURL = model2API;
 
     let token = localStorage.getItem('token');
@@ -213,7 +211,7 @@ function MyModal(props) {
   }
 
   useEffect(() => {
-    getSummary('Extractive');
+    getSummary('Extractive (condensing)');
     return () => {
     }
   }, [])
@@ -284,8 +282,8 @@ function MyModal(props) {
                     <div className="col-9">
                       <Form>
                         <Form.Control as="select" size="sm" onChange={modelChangeHandler} value={state.model}>
-                          <option>Extractive</option>
-                          <option>Abstractive</option>
+                          <option>Extractive (condensing)</option>
+                          <option>Abstractive (interpreting)</option>
                         </Form.Control>
                       </Form>
                     </div>

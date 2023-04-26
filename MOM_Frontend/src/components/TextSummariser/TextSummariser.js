@@ -91,7 +91,7 @@ const TextSummariser = () => {
                                         <div class="form-check my-3">
                                             <input class="form-check-input" type="radio" value="model1" checked={state.modelOption === "model1"} onChange={textareaHandler} name="modelOption" id="model1Option" />
                                             <label class="form-check-label" for="model1Option">
-                                                Extractive Summarization
+                                                Extractive Summarization (condensing)
                                             </label>
                                         </div>
                                     </div>
@@ -99,7 +99,7 @@ const TextSummariser = () => {
                                         <div class="form-check my-3">
                                             <input class="form-check-input" type="radio" value="model2" checked={state.modelOption === "model2"} onChange={textareaHandler} name="modelOption" id="model2Option" />
                                             <label class="form-check-label" for="model2Option">
-                                                Abstractive Summarization
+                                                Abstractive Summarization (interpreting)
                                             </label>
                                             {state.modelOption === "model2" && (
                                                 <div>

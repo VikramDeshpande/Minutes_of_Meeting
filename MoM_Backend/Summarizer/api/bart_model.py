@@ -2,14 +2,13 @@ import json
 import re
 import torch
 from transformers import BartTokenizer, BartForConditionalGeneration
-from transformers import T5Tokenizer, T5ForConditionalGeneration, T5Config
 
 def main_bart(conversation, summary_length):
   
   tokenizer = BartTokenizer.from_pretrained('facebook/bart-large-cnn')
   model = BartForConditionalGeneration.from_pretrained('facebook/bart-large-cnn')
 
-  desired_length = min(summary_length, len(conversation.split())/4)
+  desired_length = min(summary_length, len(conversation.split())/3)
      
   # people = set([name.strip() for name in re.findall("([A-Z][a-z]*):", conversation)])
 
@@ -33,13 +32,10 @@ def main_bart(conversation, summary_length):
       if sentence.strip() != "":
           main_summary += f"\n{i+1}. {sentence.strip()}."
 
-  intro_length = min(int(len(summary) * 0.3), desired_length) # Set intro summary length to minimum of 30% of main summary length and desired length
+  intro_length = min(int(len(summary) * 0.3), desired_length) 
   intro_ids = model.generate(tokenizer.encode(summary, truncation=True, return_tensors='pt'), max_length=intro_length, num_beams=2, no_repeat_ngram_size=2, early_stopping=True)
   intro_text = tokenizer.decode(intro_ids[0], skip_special_tokens=True)
 
-  # conclusion_length = min(int(len(summary) * 0.5), desired_length) # Set conclusion summary length to minimum of 30% of main summary length and desired length
-  # conclusion_ids = model.generate(tokenizer.encode(summary[-conclusion_length:], truncation=True, return_tensors='pt'), max_length=conclusion_length, num_beams=2, no_repeat_ngram_size=2, early_stopping=True)
-  # conclusion_text = tokenizer.decode(conclusion_ids[0], skip_special_tokens=True)
 
   main_points = main_summary
 

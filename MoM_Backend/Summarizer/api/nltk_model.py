@@ -10,13 +10,10 @@ from nltk.tokenize import sent_tokenize
 
 def clean(text):
     sample = text.split('**')
-    sample.pop(0)
     clean_text = ""
     i = 0
     for t in sample:
-        if i % 2 != 0:
-            clean_text += str(t)
-        i += 1
+      clean_text += str(t)
     return clean_text
 
 

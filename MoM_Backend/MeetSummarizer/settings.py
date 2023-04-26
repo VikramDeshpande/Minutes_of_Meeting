@@ -125,7 +125,7 @@ JWT_AUTH = {
 }
 
 CORS_ORIGIN_WHITELIST = (
-    'http://localhost:3000', 'https://minutes-of-meeting.vercel.app',
+    'http://localhost:3000', 
 )
 
 CORS_ALLOW_ALL_ORIGINS = True

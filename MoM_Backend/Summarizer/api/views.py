@@ -108,7 +108,7 @@ def nltkSummarizer(request):
 def bartSummarizer(request):
     try:
         input_text = str(request.data['input_text'])
-        summary_length = float(request.data.get('summary_length', len(input_text.split())/4))
+        summary_length = float(request.data.get('summary_length', len(input_text.split())/3))
         op_text = main_bart(input_text, summary_length=summary_length)
         return Response({'op_text': op_text})
     except Exception as e:
