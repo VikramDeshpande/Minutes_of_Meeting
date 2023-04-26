@@ -1,9 +1,9 @@
 chrome.storage.sync.get(["subtitleWarning"], function (result) {
-    if(result.subtitleWarning){
-        $("#captions-off").css("display","block");
+    if (result.subtitleWarning) {
+        $("#captions-off").css("display", "block");
     }
-    else{
-        $("#captions-off").css("display","none");
+    else {
+        $("#captions-off").css("display", "none");
     }
 })
 
@@ -78,13 +78,13 @@ $("#download").on('click', function () {
         doc.setFillColor(221, 221, 221);
         doc.setLineWidth(1.5);
         doc.rect(0, 0, 220, 60, "F");
-        
+
         var img = new Image();
         img.src = "round-table.png"
         doc.addImage(img, 'PNG', 20, 6, 46, 46);
 
         doc.setLineWidth(0.7);
-        doc.setDrawColor(0,0,0);
+        doc.setDrawColor(0, 0, 0);
         doc.line(10, 60, 200, 60);
 
         doc.setFontSize(37);
@@ -145,7 +145,7 @@ $("#download").on('click', function () {
 $("#summary").on('click', function () {
     chrome.storage.sync.get(["script", "meet_code"], function (output) {
         const now = new Date();
-        const datetime = `${now.getFullYear()}${(now.getMonth()+1).toString().padStart(2, '0')}${now.getDate().toString().padStart(2, '0')}-${now.getHours().toString().padStart(2, '0')}${now.getMinutes().toString().padStart(2, '0')}${now.getSeconds().toString().padStart(2, '0')}`;
+        const datetime = `${now.getFullYear()}${(now.getMonth() + 1).toString().padStart(2, '0')}${now.getDate().toString().padStart(2, '0')}-${now.getHours().toString().padStart(2, '0')}${now.getMinutes().toString().padStart(2, '0')}${now.getSeconds().toString().padStart(2, '0')}`;
         const id = `${output.meet_code}-${datetime}`;
         const message = {
             type: "post_meet",

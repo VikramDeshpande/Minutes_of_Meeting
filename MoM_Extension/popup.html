@@ -8,17 +8,9 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      rel="stylesheet"
-      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-      crossorigin="anonymous"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Chango&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap"
         rel="stylesheet">
@@ -27,43 +19,45 @@
     <style>
         /* Modal Structure */
         .modal-content {
-          padding: 15px;
-          width:100%;
-          align-items: center;
-          display:inline;
+            padding: 15px;
+            width: 100%;
+            align-items: center;
+            display: inline;
         }
-  
-        .loginContainer{
-          justify-content: center;
-          margin-top: 10px;
-          font-size: large;
-          font-weight: 500;
-          font-family: sans-serif;
-          width: 100%;
-          background-color:white;
-          border: transparent;
+
+        .loginContainer {
+            justify-content: center;
+            margin-top: 10px;
+            font-size: large;
+            font-weight: 500;
+            font-family: sans-serif;
+            width: 100%;
+            background-color: white;
+            border: transparent;
         }
-        .loginContainer p{
+
+        .loginContainer p {
             text-align: center;
         }
-  
-        .loginContainer a:link, .loginContainer a:visited {
-          justify-content: left;  
-          color:white;
-          border-radius: 25px;
-          background-color: #34495e;
-          width: 90px;
-          padding:10px;
-          padding-left:20px;
-          padding-right: 20px;
-          margin: 10px;
-          align-self:center;
+
+        .loginContainer a:link,
+        .loginContainer a:visited {
+            justify-content: left;
+            color: white;
+            border-radius: 25px;
+            background-color: #34495e;
+            width: 90px;
+            padding: 10px;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin: 10px;
+            align-self: center;
         }
-  
-        .loginContainer a:hover{      
-          background-color: rgb(71, 99, 128);
+
+        .loginContainer a:hover {
+            background-color: rgb(71, 99, 128);
         }
-      </style>
+    </style>
 </head>
 
 <body>
@@ -86,9 +80,9 @@
     </div>
     <div class="modal-content">
         <!-- If Logged in it shows email and name, otherwise login button -->
-       <div id="loginContainer" class="loginContainer">
-       </div>
-     </div>
+        <div id="loginContainer" class="loginContainer">
+        </div>
+    </div>
     <div id="captions-on">
         <div style="text-align: center;margin-top: 10px;">
             <a class="btn btn--svg js-animated-button" id="download" role="button"><span
@@ -109,9 +103,9 @@
                 </svg></a>
         </div>
         <div style="text-align: center;margin-top: 10px;">
-            <a class="btn btn--svg js-animated-button" id="summary" role="button"><span
-                    class="btn--svg__label">Generate Summary</span><svg class="btn--svg__circle" width="190" x="0px" y="0px"
-                    viewBox="0 0 60 60" enable-background="new 0 0 60 60">
+            <a class="btn btn--svg js-animated-button" id="summary" role="button"><span class="btn--svg__label">Generate
+                    Summary</span><svg class="btn--svg__circle" width="190" x="0px" y="0px" viewBox="0 0 60 60"
+                    enable-background="new 0 0 60 60">
                     <circle class="js-discover-circle" stroke="#FFF" fill="#2c3e50" cx="30" cy="30" r="28.7">
                     </circle>
                 </svg><svg class="btn--svg__border" x="0px" y="0px" preserveaspectratio="none"

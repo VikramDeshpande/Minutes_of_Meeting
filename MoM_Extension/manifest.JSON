@@ -1,36 +1,33 @@
 {
-    "manifest_version":2,
-    "name":"Meet Transcript",
-    "version":"1.0",
-    "description":"A google meet supported chrome extension that make notes using Captions",
-    "icons": {
-        "128": "round-table.png" 
+  "manifest_version": 2,
+  "name": "Meet Transcript",
+  "version": "1.0",
+  "description": "A google meet supported chrome extension that make notes using Captions",
+  "icons": {
+    "128": "round-table.png"
+  },
+  "background": {
+    "scripts": ["event.js"],
+    "persistent": false
+  },
+  "browser_action": {
+    "default-icon": "round-table.png",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://meet.google.com/*"],
+      "js": ["jquery.min.js", "content.js"],
+      "run_at": "document_idle",
+      "all_frames": false
     },
-    "background": {
-        "scripts": ["event.js"],
-        "persistent": false
-    },
-    "browser_action": {
-        "default-icon": "round-table.png",
-        "default_popup": "popup.html"
-    },
-    "content_scripts":[
-        {
-          "matches":["https://meet.google.com/*"],
-          "js":["jquery.min.js","content.js"],
-          "run_at": "document_idle",
-          "all_frames": false
-        },
-        {
-            "matches": ["http://localhost:3000/*"],
-            "js": ["loginContentScript.js"],
-            "run_at": "document_idle",
-            "all_frames": false
-        }
-    ],
-      "permissions":[
-        "activeTab","storage","notifications"
-    ],
-    "web_accessible_resources": ["content.js"]
-
+    {
+      "matches": ["http://localhost:3000/*"],
+      "js": ["loginContentScript.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "permissions": ["activeTab", "storage", "notifications"],
+  "web_accessible_resources": ["content.js"]
 }
