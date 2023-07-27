@@ -1,17 +1,21 @@
-
 from pathlib import Path
 import os
 import datetime
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+import django
+from django.utils.encoding import smart_str
+from django.utils.translation import gettext
 
+django.utils.encoding.smart_text = smart_str # fix deprecated import
+django.utils.translation.ugettext = gettext # fix deprecated import
 
 SECRET_KEY = 'x$6t$$sa27c5!&*sti%dlmknj9bw9p2nh40vh^d(eq=rt)$2yl'
 
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -43,7 +47,7 @@ ROOT_URLCONF = 'MeetSummarizer.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,"templates")],
+        'DIRS': [os.path.join(BASE_DIR, "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -58,8 +62,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'MeetSummarizer.wsgi.application'
 
-
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -69,25 +71,24 @@ DATABASES = {
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-
-
 
 LANGUAGE_CODE = 'en-us'
 
@@ -99,16 +100,11 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-
-
 STATIC_URL = '/static/'
 
-
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    ),
+    'DEFAULT_PERMISSION_CLASSES':
+    ('rest_framework.permissions.IsAuthenticated', ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
@@ -118,15 +114,9 @@ REST_FRAMEWORK = {
 
 JWT_AUTH = {
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'Summarizer.utils.my_jwt_response_handler',
-
-   
     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=2),
-
 }
 
-CORS_ORIGIN_WHITELIST = (
-    'http://localhost:3000', 
-)
+CORS_ORIGIN_WHITELIST = ('http://localhost:3000', )
 
 CORS_ALLOW_ALL_ORIGINS = True
-
